@@ -59,6 +59,11 @@ public class EnemyHealth : MonoBehaviour
         if (rb != null)
             rb.linearVelocity = Vector3.zero;
 
+        //Notificar que este enemigo murió (para saber si es el último)
+        if (EnemyManager.Instance != null)
+            EnemyManager.Instance.EnemigoMuerto(transform.position);
+
+
         // Destruir después de animación (da tiempo para el audio)
         Destroy(gameObject, 3f);
     }
