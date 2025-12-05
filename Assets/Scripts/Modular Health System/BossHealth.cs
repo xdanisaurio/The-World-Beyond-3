@@ -51,6 +51,11 @@ public class BossHealth : MonoBehaviour
         if (machineStates != null)
             machineStates.enabled = false;
 
+        if (BossEnemyManager.Instance != null)
+        {
+            BossEnemyManager.Instance.EnemigoMuerto(transform.position);
+        }
+
         Destroy(gameObject, 3f);
     }
 }
