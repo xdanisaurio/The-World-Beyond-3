@@ -645,6 +645,8 @@ MonoBehaviour:
   panelGameOver: {fileID: 0}
   panelGameplay: {fileID: 0}
   panelTriggerEspecial: {fileID: 0}
+  panelTriggerEspecial2: {fileID: 0}
+  panelTriggerEspecial3: {fileID: 0}
   panelFinalJuego: {fileID: 0}
   botonJugar: {fileID: 613855486}
   botonPausa: {fileID: 0}
@@ -5634,7 +5636,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 283.00003, y: 159}
-  m_SizeDelta: {x: 6485.9365, y: 3629.6821}
+  m_SizeDelta: {x: 6573.1396, y: 3757.518}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1094050841
 MonoBehaviour:
