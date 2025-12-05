@@ -103,9 +103,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLifeTime: 2.5
-  speed: 14
+  speed: 16
   returnSpeed: 15
-  maxDistance: 10
+  maxDistance: 15
   rotatioSpeed: 360
 --- !u!114 &6579069446641816222
 MonoBehaviour:

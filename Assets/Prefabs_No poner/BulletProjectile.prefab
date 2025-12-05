@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5cc664aac713a4282d3b7c9b779b0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 28
+  speed: 30
   destroyDistance: 1
   inpactEffect: {fileID: 2659462638974900628, guid: 22669d45e10ebba4cb5efbfd2fead812, type: 3}
 --- !u!114 &6591694103734120326
