@@ -496,7 +496,7 @@ MonoBehaviour:
   basicEnemy: {fileID: 2703947765747308202, guid: 9a7d1c3f5ebcb2b45b576584e72d4e97, type: 3}
   advancedEnemy: {fileID: 5458765946192229743, guid: 3f308e0139c933942aa1b8b378bb4c6b, type: 3}
   basicWaveAmount: 2
-  advancedWaveAmount: 2
+  advancedWaveAmount: 3
 --- !u!4 &321694959
 Transform:
   m_ObjectHideFlags: 0
