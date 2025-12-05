@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Panel Especial Trigger")]
     public GameObject panelTriggerEspecial;
+    public GameObject panelTriggerEspecial2;
+    public GameObject panelTriggerEspecial3;
 
     [Header("Panel Final del Juego")]
     public GameObject panelFinalJuego;
@@ -47,6 +49,8 @@ public class UIManager : MonoBehaviour
         if (panelPausa != null) panelPausa.SetActive(false);
         if (panelGameOver != null) panelGameOver.SetActive(false);
         if (panelTriggerEspecial != null) panelTriggerEspecial.SetActive(false);
+        if (panelTriggerEspecial2 != null) panelTriggerEspecial2.SetActive(false);
+        if (panelTriggerEspecial3 != null) panelTriggerEspecial3.SetActive(false);
         if (panelFinalJuego != null) panelFinalJuego.SetActive(false);
     }
 
@@ -166,15 +170,51 @@ public class UIManager : MonoBehaviour
         {
             panelTriggerEspecial.SetActive(true);
         }
+        
+    }
+
+    public void MostrarPanelTrigger2()
+    {
+        bloqueoEscape = true;
+
+        if (panelPausa != null) panelPausa.SetActive(false);
+
+
+        if (panelTriggerEspecial2 != null)
+        {
+            {
+                panelTriggerEspecial2.SetActive(true);
+            }
+        }
+    }
+
+
+
+    public void MostrarPanelTrigger3()
+    {
+        bloqueoEscape = true;
+
+        if (panelPausa != null) panelPausa.SetActive(false);
+
+
+        if (panelTriggerEspecial3 != null)
+        {
+            {
+                panelTriggerEspecial3.SetActive(true);
+            }
+        }
     }
 
     public void OcultarPanelTrigger()
     {
         if (panelTriggerEspecial != null)
             panelTriggerEspecial.SetActive(false);
-
-        bloqueoEscape = false;//Permitir escape otra vez
         
+        if (panelTriggerEspecial2 != null)
+            panelTriggerEspecial2.SetActive(false);
+
+        if (panelTriggerEspecial3 != null)
+            panelTriggerEspecial3.SetActive(false);
     }
 
     public void MostrarFinalJuego()
