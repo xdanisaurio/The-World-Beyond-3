@@ -1022,7 +1022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &562634426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1186,7 +1186,7 @@ PrefabInstance:
       objectReference: {fileID: 24300002, guid: 714a3de7cc836424c9e1ca61bc49951b, type: 2}
     - target: {fileID: 6808616142907293736, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: _value
-      value: 100
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 6875023358211377781, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: m_Color.b
@@ -1326,9 +1326,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6902214684363660538, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8084252502833482518, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429135014379807251, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8552983382472768985, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -605
       objectReference: {fileID: 0}
     - target: {fileID: 8744150798924579711, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
       propertyPath: m_Pivot.x
