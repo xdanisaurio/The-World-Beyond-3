@@ -210,6 +210,8 @@ public class UIManager : MonoBehaviour
 
     public void OcultarPanelTrigger()
     {
+        bloqueoEscape=false;
+
         if (panelTriggerEspecial != null)
             panelTriggerEspecial.SetActive(false);
         
