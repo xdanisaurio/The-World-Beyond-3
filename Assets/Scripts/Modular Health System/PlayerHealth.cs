@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float initialHealth;
 
     [Header("Damage Effect")]
-    public ParticleSystem damageParticle; // <-- particula de daño
+    public ParticleSystem damageParticle;
     public float particleOffsetY = 1f;
 
     private Animator animator;
@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
     // ---- FEEDBACK DE DAÑO ----
     [Header("Feedback de Daño")]
     [SerializeField] private DamageFlashSimple damageFlash;
-    [SerializeField] private DamageOverlay damageOverlay; // <= añadido al inspector
+    [SerializeField] private DamageOverlay damageOverlay;
     [SerializeField] private AudioSource audioSourceDamage;
     [SerializeField] private AudioClip damageSound;
 
@@ -26,21 +26,15 @@ public class PlayerHealth : MonoBehaviour
         {
             vidaPersonaje.Initialize(initialHealth);
 
-            // Detectar daño
             vidaPersonaje.HealthValueChanged += OnHealthChanged;
-
-            // Detectar muerte
             vidaPersonaje.Death += OnPlayerDeath;
 
-
-            // Guardar vida inicial para detectar daño
             lastHealth = vidaPersonaje.currentHealth;
         }
     }
 
     private void OnHealthChanged(float currentHealth)
     {
-        // Detectar daño real
         if (currentHealth < lastHealth)
         {
             PlayDamageFeedback();
@@ -52,9 +46,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void PlayDamageFeedback()
     {
-        // Flash rojo
+        // Flash rojo del personaje
         if (damageFlash != null)
             damageFlash.Flash();
+
+        // Overlay rojo en pantalla
+        if (damageOverlay != null)
+            damageOverlay.Flash();
 
         // Sonido de daño
         if (audioSourceDamage != null && damageSound != null)
@@ -65,7 +63,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (damageParticle != null)
         {
-            // Instanciar partícula justo encima del jugador
             ParticleSystem particle = Instantiate(
                 damageParticle,
                 transform.position + Vector3.up * particleOffsetY,
@@ -77,39 +74,20 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void OnDamageTaken(float currentHealth)
-    {
-        // Flash en el personaje
-        if (damageFlash != null)
-            damageFlash.Flash();
-
-        // Efecto en la pantalla (overlay rojo)
-        if (damageOverlay != null)
-            damageOverlay.Flash();
-
-        // Sonido de daño
-        if (audioSourceDamage != null && damageSound != null)
-            audioSourceDamage.PlayOneShot(damageSound);
-    }
-
     private void OnPlayerDeath()
     {
         Debug.Log("El jugador ha muerto");
 
-        // ---- DESACTIVAR OVERLAY DE DAÑO AL MORIR ----
+        // Quitar overlay para que no tape el panel de muerte
         if (damageOverlay != null)
             damageOverlay.gameObject.SetActive(false);
 
         if (GameManager.Instancia != null)
-        {
             GameManager.Instancia.GameOver();
-        }
 
-        // Animación de muerte
         if (animator != null)
             animator.SetTrigger("Die");
 
-        // Evitar movimiento al morir
         var rb = GetComponent<Rigidbody>();
         if (rb != null)
             rb.linearVelocity = Vector3.zero;
@@ -120,7 +98,8 @@ public class PlayerHealth : MonoBehaviour
         if (vidaPersonaje != null)
         {
             vidaPersonaje.Death -= OnPlayerDeath;
-            vidaPersonaje.HealthValueChanged -= OnDamageTaken;
+            vidaPersonaje.HealthValueChanged -= OnHealthChanged;
         }
     }
 }
+

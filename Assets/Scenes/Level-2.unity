@@ -323,9 +323,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 776415673}
     - target: {fileID: 5338126693077350715, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 281eef2126eeca949b7abbaec768632f, type: 3}
+    - target: {fileID: 5338126693077350715, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: damageOverlay
       value: 
-      objectReference: {fileID: 1641027232}
+      objectReference: {fileID: 101357447}
     - target: {fileID: 5639486409021558610, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -607,6 +611,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2456451775168893542, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3201063063386660022, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -702,9 +710,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8744150798924579711, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1641027231}
     - targetCorrespondingSourceObject: {fileID: 9039232128329008677, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1031621965}
@@ -716,11 +721,17 @@ PrefabInstance:
       addedObject: {fileID: 1383900797}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
---- !u!224 &101357447 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8744150798924579711, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
+--- !u!114 &101357447 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5972204852562451294, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
   m_PrefabInstance: {fileID: 101357446}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ae4c0627740e840beda988871d2c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &101357448 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 10305261872154988, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
@@ -8064,98 +8075,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb1aad7691ef8c3459382eb1e12ddefb, type: 3}
---- !u!1 &1641027230
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1641027231}
-  - component: {fileID: 1641027234}
-  - component: {fileID: 1641027233}
-  - component: {fileID: 1641027232}
-  m_Layer: 5
-  m_Name: DamageOverlay
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1641027231
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641027230}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.8742, y: 9.8742, z: 9.8742}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 101357447}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0050964, y: 0.32309}
-  m_SizeDelta: {x: 194.45, y: 109.31}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1641027232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641027230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54ae4c0627740e840beda988871d2c21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  overlayImage: {fileID: 0}
-  maxAlpha: 0.35
-  fadeInSpeed: 8
-  fadeOutSpeed: 2
---- !u!114 &1641027233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641027230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.24705882}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3edd06f2520c7f74d84a6d3d2cc2a672, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1641027234
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1641027230}
-  m_CullTransparentMesh: 1
 --- !u!4 &1643716853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8576190250978304027, guid: cb1aad7691ef8c3459382eb1e12ddefb, type: 3}
