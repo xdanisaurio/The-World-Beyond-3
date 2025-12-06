@@ -7327,7 +7327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08c68790e6855234b84635bf419d64d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  llavePrefab: {fileID: 4203655700994457839, guid: 778fd6631d66cc34e9a1294d1d368430, type: 3}
+  llavePrefab: {fileID: 2030864662819002921, guid: bd4df58422171fd4dad868e7e233584e, type: 3}
 --- !u!4 &1483218451
 Transform:
   m_ObjectHideFlags: 0
