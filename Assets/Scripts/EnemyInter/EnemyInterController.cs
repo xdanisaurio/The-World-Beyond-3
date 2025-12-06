@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem.XR;
-
-
 public class EnemyInterController : MonoBehaviour
 {
-    //Intanciar el boomerang aqui.
+    //Instanciar el boomerang aqui.
     [SerializeField] private GameObject boomerangPrefab;
     public GameObject BoomerangPrefab { get => boomerangPrefab; set => boomerangPrefab = value; }
 
@@ -24,7 +21,6 @@ public class EnemyInterController : MonoBehaviour
     public NavMeshAgent Agent { get => _agent; set => _agent = value; }
     private NavMeshAgent _agent;
 
-    //Llamamos la mecanica de estados y hacemos variables de sus respectivas variables.
     public Transform Target { get => _target; set => _target = value; }
     [SerializeField] Transform _target;
 
@@ -37,21 +33,22 @@ public class EnemyInterController : MonoBehaviour
 
     [SerializeField] List<Transform> _pivotes;
 
-
     [SerializeField] LayerMask playerLayer;
     [SerializeField] float detectionRadius = 5f;
     [SerializeField] float moveSpeed = 2f;
     [SerializeField] float minWaitTime = 1f;
     [SerializeField] float maxWaitTime = 3f;
-    protected bool isWaiting = false; //implemetacion nueva ahora.
+    protected bool isWaiting = false;
 
     private float idleTime;
     private float CurrentIdleTime;
 
     float _distanceToTarget;
 
-    //Llamamos la maquina de estado y rb del enemigo.
-    //Y iniciamos la mecanico en setState con (Idle).
+    // 🔥 NUEVO: Referencia al sistema de salud para detectar muerte
+    private EnemyHealth health;
+
+
     private void Start()
     {
         machineStates = GetComponent<MachineStates>();
@@ -59,16 +56,17 @@ public class EnemyInterController : MonoBehaviour
         _agent.speed = moveSpeed;
         _animator = GetComponent<Animator>();
 
+        // Obtener referencia al sistema de vida
+        health = GetComponent<EnemyHealth>();
 
         patrol = new EnemyInterPatrol(this);
         _chase = new EnemyInterChase(this);
         _attack = new EnemyInterAttack(this);
 
-
-        //Implementacion nueva.
+        //Implementación nueva.
         idleTime = Random.Range(minWaitTime, maxWaitTime);
         CurrentIdleTime = 0;
-        //
+
         machineStates.SetState(patrol);
 
         machineStates.AddTransition(patrol, new StateTransition(_chase, () => IsPlayerDetected() && _distanceToTarget >= _alertRadius));
@@ -82,9 +80,18 @@ public class EnemyInterController : MonoBehaviour
     }
 
 
-    ////Implementacion de nueva.
     private void Update()
     {
+        // SI EL ENEMIGO MUERE → DETENER TODO (rotación + movimiento + IA)
+        if (health != null && health.IsDead)
+        {
+            if (_agent != null)
+                _agent.enabled = false; // Evita movimiento por NavMesh
+
+            return; // Evita toda la lógica de rotación y detección
+        }
+
+        // Comportamiento normal si NO está muerto
         if (machineStates.currentState == patrol)
         {
             CurrentIdleTime += Time.deltaTime;
@@ -110,7 +117,6 @@ public class EnemyInterController : MonoBehaviour
     }
 
 
-    //Deteccion de readio de Enemigo.
     public bool IsPlayerDetected()
     {
         Collider[] playerInRange = Physics.OverlapSphere(transform.position, detectionRadius, playerLayer);
@@ -126,10 +132,12 @@ public class EnemyInterController : MonoBehaviour
             _attack.LaunchBoomerangFromAnimation();
         }
     }
+
     public void AnimationFinished()
     {
         _animationFinished = true;
     }
+
     public void AnimationStarted()
     {
         _animationFinished = false;
@@ -142,6 +150,5 @@ public class EnemyInterController : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, AlertRadius);
-
     }
 }

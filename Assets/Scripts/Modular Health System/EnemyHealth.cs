@@ -18,32 +18,49 @@ public class EnemyHealth : MonoBehaviour
 
     private float lastHealth;
 
+    // ✅ Propiedad que indica si el enemigo está muerto
+    public bool IsDead { get; private set; } = false;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         machineStates = GetComponent<MachineStates>();
         deathSound = GetComponent<EnemyDeathSound>(); // <-- Añadido
 
+        // Asegúrate de que vidaEnemigo no sea null en el inspector o inicialízalo aquí
+        if (vidaEnemigo == null)
+        {
+            Debug.LogError($"[{name}] vidaEnemigo no está asignado en el inspector.");
+            return;
+        }
+
         vidaEnemigo.Initialize(initialHealth);
 
         vidaEnemigo.HealthValueChanged += OnHealthChanged;
         vidaEnemigo.Death += OnDeath;
 
-        healthSlider.maxValue = vidaEnemigo.maxHealth;
-        healthSlider.value = vidaEnemigo.currentHealth;
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = vidaEnemigo.maxHealth;
+            healthSlider.value = vidaEnemigo.currentHealth;
+        }
 
         lastHealth = vidaEnemigo.currentHealth;
     }
 
     private void OnDestroy()
     {
-        vidaEnemigo.HealthValueChanged -= OnHealthChanged;
-        vidaEnemigo.Death -= OnDeath;
+        if (vidaEnemigo != null)
+        {
+            vidaEnemigo.HealthValueChanged -= OnHealthChanged;
+            vidaEnemigo.Death -= OnDeath;
+        }
     }
 
     private void OnHealthChanged(float currentHealth)
     {
-        healthSlider.value = currentHealth;
+        if (healthSlider != null)
+            healthSlider.value = currentHealth;
 
         // Detectar si recibió daño
         if (currentHealth < lastHealth)
@@ -72,11 +89,15 @@ public class EnemyHealth : MonoBehaviour
 
     private void UpdateHealthSlider(float currentHealth)
     {
-        healthSlider.value = currentHealth;
+        if (healthSlider != null)
+            healthSlider.value = currentHealth;
     }
 
     private void OnDeath()
     {
+        // ✅ Marcar como muerto inmediatamente
+        IsDead = true;
+
         Debug.Log("El enemigo ha muerto");
 
         // Reproducir sonido de muerte
@@ -91,15 +112,19 @@ public class EnemyHealth : MonoBehaviour
         if (machineStates != null)
             machineStates.enabled = false;
 
-        // Evitar que se siga moviendo
+        // Evitar que se siga moviendo (si tiene Rigidbody)
         var rb = GetComponent<Rigidbody>();
         if (rb != null)
+        {
+            // Si usas Unity 2020+ y Rigidbody tiene velocity:
             rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = false; // opcional, según comportamiento deseado
+        }
 
         //Notificar que este enemigo murió (para saber si es el último)
         if (EnemyManager.Instance != null)
             EnemyManager.Instance.EnemigoMuerto(transform.position);
-
 
         // Destruir después de animación (da tiempo para el audio)
         Destroy(gameObject, 3f);
