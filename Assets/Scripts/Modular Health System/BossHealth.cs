@@ -82,6 +82,10 @@ public class BossHealth : MonoBehaviour
         if (machineStates != null)
             machineStates.enabled = false;
 
+        //Notificar que este enemigo murió (para saber si es el último)
+        if (BossEnemyManager.Instance != null)
+            BossEnemyManager.Instance.EnemigoMuerto(transform.position);
+
         Destroy(gameObject, 3f);
     }
 }
