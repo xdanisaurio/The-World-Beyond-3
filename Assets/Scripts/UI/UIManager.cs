@@ -121,6 +121,9 @@ public class UIManager : MonoBehaviour
     {
         if (panelGameOver != null) panelGameOver.SetActive(true);
         if (panelGameplay != null) panelGameplay.SetActive(false);
+        if (panelTriggerEspecial != null) panelTriggerEspecial.SetActive(false);
+        if (panelTriggerEspecial2 != null) panelTriggerEspecial2.SetActive(false);
+        if (panelTriggerEspecial3 != null) panelTriggerEspecial3.SetActive(false);
     }
 
     public void SalirDelJuego()
