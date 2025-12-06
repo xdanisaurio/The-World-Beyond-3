@@ -29,14 +29,14 @@ public class DamageOverlay : MonoBehaviour
         }
     }
 
-    // M�todo amigable: puede llamarse desde otros scripts
+    // Metodo amigable: puede llamarse desde otros scripts
     public void Flash()
     {
         // Compatibilidad: Flash() y ShowDamage() hacen lo mismo
         ShowDamage();
     }
 
-    // Nombre alternativo que tambi�n exist�a antes
+    // Nombre alternativo que tambien existia antes
     public void ShowDamage()
     {
         if (overlayImage == null) return;
