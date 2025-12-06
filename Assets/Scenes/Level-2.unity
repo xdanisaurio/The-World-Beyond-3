@@ -3458,7 +3458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4133897000884392002, guid: 914c73804dc4c044bbbc2876d8895fc6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4133897000884392002, guid: 914c73804dc4c044bbbc2876d8895fc6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3466,7 +3466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4133897000884392002, guid: 914c73804dc4c044bbbc2876d8895fc6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.89
+      value: -42
       objectReference: {fileID: 0}
     - target: {fileID: 5266405979783117560, guid: 914c73804dc4c044bbbc2876d8895fc6, type: 3}
       propertyPath: target
@@ -3478,7 +3478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7109666765706006190, guid: 914c73804dc4c044bbbc2876d8895fc6, type: 3}
       propertyPath: near clip plane
-      value: -15
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 7109666765706006190, guid: 914c73804dc4c044bbbc2876d8895fc6, type: 3}
       propertyPath: orthographic size
