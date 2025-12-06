@@ -13826,100 +13826,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 97065656451404455, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036568253955243138, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_Color.a
-      value: 0.39215687
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036568253955243138, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036568253955243138, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1036568253955243138, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1414917421966891155, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112304928315092944, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_text
-      value: 'kill all enemies to get the key
-
-
-        Use the key with (E)
-
-
-        Open
-        the energy gate with the key (E)'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112304928315092944, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_margin.w
-      value: -583.4992
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112304928315092944, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_margin.y
-      value: -36.31006
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112304928315092944, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: af03b55ee91b36e438044edfd2b3e28f, type: 2}
-    - target: {fileID: 2112304928315092944, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_fontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2112304928315092944, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -3299767539263008764, guid: af03b55ee91b36e438044edfd2b3e28f, type: 2}
-    - target: {fileID: 2112304928315092944, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2456451775168893542, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3201063063386660022, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115397387206964139, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_text
-      value: Hi
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115397387206964139, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_fontStyle
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 5972204852562451294, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: overlayImage
-      value: 
-      objectReference: {fileID: 1363272591751009086}
-    - target: {fileID: 6045814925626254928, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6494844597912594101, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8084252502833482518, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8429135014379807251, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8744150798924579711, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
       propertyPath: m_Pivot.x
@@ -14006,17 +13915,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
---- !u!114 &1363272591751009086 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6045814925626254928, guid: 431dcfc2dbc180e42abe10ffc28cc54a, type: 3}
-  m_PrefabInstance: {fileID: 1363272591751009085}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1378930507243494271
 Transform:
   m_ObjectHideFlags: 0
