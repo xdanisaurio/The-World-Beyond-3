@@ -14880,7 +14880,7 @@ Transform:
   m_GameObject: {fileID: 2809263250294272943}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.48, y: -2.2069569, z: 12.33}
+  m_LocalPosition: {x: -10.97, y: -2.2069569, z: 33.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25275,6 +25275,8 @@ MonoBehaviour:
   vidaEnemigo: {fileID: 8966753154851214029}
   healthSlider: {fileID: 4647255144955870048}
   initialHealth: 90
+  damageParticle: {fileID: 6651247000163292862, guid: ecb38e0319a6ad44cbca52d7b5add7a6, type: 3}
+  particleOffsetY: 2
 --- !u!195 &3750009938151659805
 NavMeshAgent:
   m_ObjectHideFlags: 0

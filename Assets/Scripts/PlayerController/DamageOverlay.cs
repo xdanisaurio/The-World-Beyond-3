@@ -8,7 +8,7 @@ public class DamageOverlay : MonoBehaviour
     [Header("Image que hace el overlay")]
     public Image overlayImage;
 
-    [Header("Alpha máxima cuando recibe daño")]
+    [Header("Alpha mï¿½xima cuando recibe daï¿½o")]
     public float maxAlpha = 0.35f;
 
     [Header("Velocidad (unidades por segundo)")]
@@ -29,14 +29,14 @@ public class DamageOverlay : MonoBehaviour
         }
     }
 
-    // Método amigable: puede llamarse desde otros scripts
+    // Mï¿½todo amigable: puede llamarse desde otros scripts
     public void Flash()
     {
         // Compatibilidad: Flash() y ShowDamage() hacen lo mismo
         ShowDamage();
     }
 
-    // Nombre alternativo que también existía antes
+    // Nombre alternativo que tambiï¿½n existï¿½a antes
     public void ShowDamage()
     {
         if (overlayImage == null) return;

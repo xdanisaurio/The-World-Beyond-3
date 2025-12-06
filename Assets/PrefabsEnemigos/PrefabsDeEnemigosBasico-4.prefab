@@ -15778,6 +15778,8 @@ MonoBehaviour:
   vidaEnemigo: {fileID: 5150629154654495232}
   healthSlider: {fileID: 7949350077934292669}
   initialHealth: 300
+  damageParticle: {fileID: 6651247000163292862, guid: ecb38e0319a6ad44cbca52d7b5add7a6, type: 3}
+  particleOffsetY: 2
 --- !u!114 &5150629154654495232
 MonoBehaviour:
   m_ObjectHideFlags: 0

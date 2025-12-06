@@ -8,9 +8,15 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField] private float initialHealth;
 
+    [Header("Damage Effect")]
+    public ParticleSystem damageParticle; // <-- particula de daño
+    public float particleOffsetY = 1f;
+
     private Animator animator;
     private MachineStates machineStates;
     private EnemyDeathSound deathSound;
+
+    private float lastHealth;
 
     private void Start()
     {
@@ -20,17 +26,48 @@ public class EnemyHealth : MonoBehaviour
 
         vidaEnemigo.Initialize(initialHealth);
 
-        vidaEnemigo.HealthValueChanged += UpdateHealthSlider;
+        vidaEnemigo.HealthValueChanged += OnHealthChanged;
         vidaEnemigo.Death += OnDeath;
 
         healthSlider.maxValue = vidaEnemigo.maxHealth;
         healthSlider.value = vidaEnemigo.currentHealth;
+
+        lastHealth = vidaEnemigo.currentHealth;
     }
 
     private void OnDestroy()
     {
-        vidaEnemigo.HealthValueChanged -= UpdateHealthSlider;
+        vidaEnemigo.HealthValueChanged -= OnHealthChanged;
         vidaEnemigo.Death -= OnDeath;
+    }
+
+    private void OnHealthChanged(float currentHealth)
+    {
+        healthSlider.value = currentHealth;
+
+        // Detectar si recibió daño
+        if (currentHealth < lastHealth)
+        {
+            PlayDamageParticle();
+        }
+
+        lastHealth = currentHealth;
+    }
+
+    private void PlayDamageParticle()
+    {
+        if (damageParticle != null)
+        {
+            // Instanciar una partícula temporal
+            ParticleSystem particle = Instantiate(
+                damageParticle,
+                transform.position + Vector3.up * particleOffsetY,
+                Quaternion.identity
+            );
+
+            particle.Play();
+            Destroy(particle.gameObject, particle.main.duration + particle.main.startLifetime.constantMax);
+        }
     }
 
     private void UpdateHealthSlider(float currentHealth)
