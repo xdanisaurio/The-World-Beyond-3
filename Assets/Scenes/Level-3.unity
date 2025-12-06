@@ -13277,7 +13277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2093542276495185546, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: flashIntensity
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2849962729119073050, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: _value
