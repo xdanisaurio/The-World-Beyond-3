@@ -1038,6 +1038,10 @@ PrefabInstance:
       propertyPath: initialHealth
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 5338126693077350715, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
+      propertyPath: particleOffsetY
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5639486409021558610, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 

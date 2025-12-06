@@ -726,7 +726,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaPersonaje: {fileID: 8065424772275975598}
   initialHealth: 100
+  damageParticle: {fileID: 3642160410948286680, guid: 171dda363e9efd94ca9bc63e38ca9658, type: 3}
+  particleOffsetY: 1.4
   damageFlash: {fileID: 2093542276495185546}
+  damageOverlay: {fileID: 0}
   audioSourceDamage: {fileID: 5639486409021558610}
   damageSound: {fileID: 0}
 --- !u!114 &1546324005495608026
@@ -774,7 +777,7 @@ AudioSource:
   m_GameObject: {fileID: 3378071383675681129}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 714a3de7cc836424c9e1ca61bc49951b, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -875,7 +878,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinnedRenderer: {fileID: 8721495494080626181}
-  flashTime: 0.1
+  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashIntensity: 1.5
+  flashTime: 0.25
 --- !u!137 &1552896328011924999
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -1527,7 +1532,7 @@ Light:
   serializedVersion: 11
   m_Type: 0
   m_Color: {r: 0.89411765, g: 0.8, b: 0.3254902, a: 1}
-  m_Intensity: 150
+  m_Intensity: 20
   m_Range: 15
   m_SpotAngle: 135.60608
   m_InnerSpotAngle: 85.37027

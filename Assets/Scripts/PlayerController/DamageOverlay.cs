@@ -1,4 +1,4 @@
-// DamageOverlay.cs
+
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -8,7 +8,7 @@ public class DamageOverlay : MonoBehaviour
     [Header("Image que hace el overlay")]
     public Image overlayImage;
 
-    [Header("Alpha m�xima cuando recibe da�o")]
+    [Header("Alpha maxima cuando recibe damage")]
     public float maxAlpha = 0.35f;
 
     [Header("Velocidad (unidades por segundo)")]
