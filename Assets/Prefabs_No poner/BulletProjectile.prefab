@@ -128,6 +128,8 @@ MonoBehaviour:
   impactEffect: {fileID: 2659462638974900628, guid: 22669d45e10ebba4cb5efbfd2fead812, type: 3}
   shakeDuration: 0.5
   shakeMagnitude: 0.6
+  indicatorPrefab: {fileID: 5783023649330032479, guid: ffd41b5bc52fb774b89979af391ced7b, type: 3}
+  indicatorDelay: 0.5
 --- !u!114 &6591694103734120326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 35
   _validTargets: 00000000
+  targetType: 0
+  shakeDuration: 0.1
+  shakeMagnitude: 0.2
 --- !u!1 &8303728288576521968
 GameObject:
   m_ObjectHideFlags: 0
