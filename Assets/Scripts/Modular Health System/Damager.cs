@@ -11,10 +11,10 @@ public enum TargetTypeEnum
 [RequireComponent(typeof(Collider))]
 public class Damager : BaseAffectHealth
 {
-    [Header("¿Quién usa este Damager?")]
+    [Header("¿Quién usa este Damager? (Player / Enemy / Object)")]
     public TargetTypeEnum targetType = TargetTypeEnum.Player;
 
-    [Header("Vibración al hacer daño (solo si este Damager es del Player)")]
+    [Header("Vibración al hacer daño")]
     public float shakeDuration = 0.1f;
     public float shakeMagnitude = 0.2f;
 
@@ -41,17 +41,13 @@ public class Damager : BaseAffectHealth
 
         foreach (var item in damageables)
         {
-            // 🔥 Aplica daño
+            // 🔥 Aplica el daño
             item.SetDamage(this);
 
-            // 📌 Vibración SOLO si:
-            // - Este Damager pertenece al jugador
-            // - El objeto golpeado es un enemigo
-            if (targetType == TargetTypeEnum.Player && other.CompareTag("Enemy"))
-            {
-                if (CameraShake.instance != null)
-                    CameraShake.instance.Shake(shakeDuration, shakeMagnitude);
-            }
+            // 📌 Vibración universal
+            // Si se hace daño a cualquier cosa con Damageable → vibración
+            if (CameraShake.instance != null)
+                CameraShake.instance.Shake(shakeDuration, shakeMagnitude);
         }
     }
 }
