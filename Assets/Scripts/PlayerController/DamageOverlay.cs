@@ -52,7 +52,7 @@ public class DamageOverlay : MonoBehaviour
         float a = overlayImage.color.a;
         while (a < maxAlpha)
         {
-            a += Time.deltaTime * fadeInSpeed;
+            a += Time.unscaledDeltaTime * fadeInSpeed;
             if (a > maxAlpha) a = maxAlpha;
             SetAlpha(a);
             yield return null;
@@ -61,7 +61,7 @@ public class DamageOverlay : MonoBehaviour
         // FADE OUT
         while (a > 0f)
         {
-            a -= Time.deltaTime * fadeOutSpeed;
+            a -= Time.unscaledDeltaTime * fadeOutSpeed;
             if (a < 0f) a = 0f;
             SetAlpha(a);
             yield return null;
@@ -69,6 +69,15 @@ public class DamageOverlay : MonoBehaviour
 
         SetAlpha(0f);
         runningRoutine = null;
+    }
+
+    public void StopOverlay()
+    {
+        if (runningRoutine != null)
+            StopCoroutine(runningRoutine);
+
+        runningRoutine = null;
+        SetAlpha(0f);
     }
 
     private void SetAlpha(float a)

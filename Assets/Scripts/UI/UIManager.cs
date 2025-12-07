@@ -107,6 +107,11 @@ public class UIManager : MonoBehaviour
 
     private void MostrarPausa()
     {
+        DamageOverlay overlay = FindObjectOfType<DamageOverlay>();
+        if (overlay != null)
+        {
+            overlay.StopOverlay();
+        }
         CameraShake.instance.StopShake();
         if (panelPausa != null) panelPausa.SetActive(true);
         if (panelGameplay != null) panelGameplay.SetActive(false);
