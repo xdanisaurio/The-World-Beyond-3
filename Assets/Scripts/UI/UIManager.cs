@@ -107,6 +107,7 @@ public class UIManager : MonoBehaviour
 
     private void MostrarPausa()
     {
+        CameraShake.instance.StopShake();
         if (panelPausa != null) panelPausa.SetActive(true);
         if (panelGameplay != null) panelGameplay.SetActive(false);
     }

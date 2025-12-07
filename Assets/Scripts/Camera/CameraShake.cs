@@ -18,6 +18,13 @@ public class CameraShake : MonoBehaviour
 
     private void Update()
     {
+        // Si el juego está pausado NO vibramos
+        if (Time.timeScale == 0f)
+        {
+            ResetPosition();
+            return;
+        }
+
         Vector3 totalOffset = Vector3.zero;
 
         for (int i = activeShakes.Count - 1; i >= 0; i--)
@@ -43,6 +50,18 @@ public class CameraShake : MonoBehaviour
     public void Shake(float duration, float magnitude)
     {
         activeShakes.Add(new ShakeData(duration, magnitude));
+    }
+
+    // --- NUEVO: Detener vibración ---
+    public void StopShake()
+    {
+        activeShakes.Clear();
+        ResetPosition();
+    }
+
+    private void ResetPosition()
+    {
+        transform.localPosition = basePosition;
     }
 
     private struct ShakeData
