@@ -1361,6 +1361,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 25
   _validTargets: 01000000
+  targetType: 0
+  shakeDuration: 0.2
+  shakeMagnitude: 0.2
 --- !u!1 &6258106120276437922
 GameObject:
   m_ObjectHideFlags: 0

@@ -30152,7 +30152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 0
+  maxHealth: 50
   objectType: 1
 --- !u!114 &8082657771150316215
 MonoBehaviour:

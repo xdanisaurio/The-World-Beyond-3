@@ -125,7 +125,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 30
   destroyDistance: 1
-  inpactEffect: {fileID: 2659462638974900628, guid: 22669d45e10ebba4cb5efbfd2fead812, type: 3}
+  impactEffect: {fileID: 2659462638974900628, guid: 22669d45e10ebba4cb5efbfd2fead812, type: 3}
+  shakeDuration: 0.5
+  shakeMagnitude: 0.6
 --- !u!114 &6591694103734120326
 MonoBehaviour:
   m_ObjectHideFlags: 0

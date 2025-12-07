@@ -1,44 +1,61 @@
-﻿// CameraShake.cs
-using UnityEngine;
-using System.Collections;
+﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class CameraShake : MonoBehaviour
 {
     public static CameraShake instance;
 
-    [Header("Shake Settings")]
-    [SerializeField] private float duration = 0.1f;
-    [SerializeField] private float magnitude = 0.07f;
+    private Vector3 basePosition;
+    private List<ShakeData> activeShakes = new List<ShakeData>();
 
     private void Awake()
     {
-        // singleton simple
         if (instance == null) instance = this;
-        else if (instance != this) Destroy(this);
+        else Destroy(gameObject);
+
+        basePosition = transform.localPosition;
     }
 
-    public void Shake()
+    private void Update()
     {
-        StartCoroutine(ShakeRoutine());
-    }
+        Vector3 totalOffset = Vector3.zero;
 
-    private IEnumerator ShakeRoutine()
-    {
-        Vector3 originalPos = transform.localPosition;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
+        for (int i = activeShakes.Count - 1; i >= 0; i--)
         {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
+            ShakeData s = activeShakes[i];
+            s.elapsed += Time.deltaTime;
 
-            transform.localPosition = new Vector3(x, y, originalPos.z);
+            if (s.elapsed >= s.duration)
+            {
+                activeShakes.RemoveAt(i);
+                continue;
+            }
 
-            elapsed += Time.deltaTime;
-            yield return null;
+            float currentMag = s.magnitude * Random.Range(1f, 2f);
+            totalOffset += Random.insideUnitSphere * currentMag;
+
+            activeShakes[i] = s;
         }
 
-        transform.localPosition = originalPos;
+        transform.localPosition = basePosition + totalOffset;
+    }
+
+    public void Shake(float duration, float magnitude)
+    {
+        activeShakes.Add(new ShakeData(duration, magnitude));
+    }
+
+    private struct ShakeData
+    {
+        public float duration;
+        public float magnitude;
+        public float elapsed;
+
+        public ShakeData(float d, float m)
+        {
+            duration = d;
+            magnitude = m;
+            elapsed = 0f;
+        }
     }
 }
-
