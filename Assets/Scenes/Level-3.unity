@@ -13303,7 +13303,7 @@ PrefabInstance:
       objectReference: {fileID: 825947184}
     - target: {fileID: 5338126693077350715, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: initialHealth
-      value: 200
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 5338126693077350715, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: particleOffsetY
