@@ -9,7 +9,7 @@ public class ProjectileBoss : MonoBehaviour
     [Header("Impact Settings")]
     public GameObject impactEffect;
     public float shakeDuration = 1f;
-    public float shakeMagnitude = 3f;
+    public float shakeMagnitude = 1f;
 
     // ---------------------------
     // INDICADOR PREVIO

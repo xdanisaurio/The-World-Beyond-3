@@ -57,7 +57,7 @@ public class BossController : MonoBehaviour
     // ---------------------------
     [Header("Fase única de proyectiles")]
     public int projectilesInPhase = 2;           // Cuántos proyectiles lanzar
-    public float projectileSpawnRadius = 6f;     // Radio alrededor del jugador
+    public float projectileSpawnRadius = 10f;     // Radio alrededor del jugador
     public float indicatorTime = 1f;             // Tiempo que aparece el indicador antes de caer
     private bool phaseActive = false;            // Para activar fase cuando < 40%
     // ---------------------------

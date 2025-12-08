@@ -146,7 +146,7 @@ MonoBehaviour:
   _validTargets: 00000000
   targetType: 0
   shakeDuration: 0.1
-  shakeMagnitude: 0.2
+  shakeMagnitude: 0.1
 --- !u!1 &8303728288576521968
 GameObject:
   m_ObjectHideFlags: 0
