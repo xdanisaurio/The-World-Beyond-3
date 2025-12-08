@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59644d2100bcc5445b5d1c19a315562e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 35
+  _value: 45
   _validTargets: 00000000
   targetType: 0
   shakeDuration: 0.1
