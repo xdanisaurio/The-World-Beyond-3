@@ -112,7 +112,7 @@ public class BossController : MonoBehaviour
 
     private void CheckPhaseActivation()
     {
-        if (!phaseActive && healthBar.fillAmount <= 0.4f)
+        if (!phaseActive && healthBar.fillAmount <= 0.3f)
         {
             phaseActive = true;
         }
