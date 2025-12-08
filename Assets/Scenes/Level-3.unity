@@ -13303,7 +13303,7 @@ PrefabInstance:
       objectReference: {fileID: 825947184}
     - target: {fileID: 5338126693077350715, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: initialHealth
-      value: 250
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 5338126693077350715, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: particleOffsetY
@@ -40454,8 +40454,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 321694958}
     - target: {fileID: 4833692814856301534, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
+      propertyPath: projectilesInPhase
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833692814856301534, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: projectileSpawnRadius
-      value: 10
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 5177942631856613596, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: player
