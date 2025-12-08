@@ -12,7 +12,7 @@ public class ProjectileBoss : MonoBehaviour
     public float shakeMagnitude = 3f;
 
     // ---------------------------
-    // NUEVO: INDICADOR PREVIO
+    // INDICADOR PREVIO
     // ---------------------------
     [Header("Indicator Settings")]
     public GameObject indicatorPrefab;   // Prefab del círculo/partícula
@@ -45,11 +45,10 @@ public class ProjectileBoss : MonoBehaviour
 
     void Update()
     {
-        // NO SE MUEVE HASTA QUE EL INDICADOR HAYA ESTADO EL TIEMPO DEFINIDO
         if (!canMove)
             return;
 
-        // (Tu código ORIGINAL, sin tocar)
+        // Movimiento
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, targetPosition) <= destroyDistance)
@@ -63,7 +62,7 @@ public class ProjectileBoss : MonoBehaviour
             if (CameraShake.instance != null)
                 CameraShake.instance.Shake(shakeDuration, shakeMagnitude);
 
-            // Destruir indicador justamente cuando el proyectil impacta
+            // Destruir indicador al impactar
             if (indicatorInstance != null)
                 Destroy(indicatorInstance);
 

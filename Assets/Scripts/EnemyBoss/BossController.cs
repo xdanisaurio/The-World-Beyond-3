@@ -1,138 +1,93 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-
 public class BossController : MonoBehaviour
 {
-    //Collider Del boss.
+    // Collider del boss
     private Collider _coliderBoss;
 
-    //Nuevo
     [Header("Referencias externas")]
-    //UI vida
     public UnityEngine.UI.Image healthBar;
-    //Sistema de oleadas 
     public WaveManager waveManager;
+    public BaseBossState previousState;
 
-    
-    public BaseBossState previousState;//Nuevo
-
-
-
-    //Del scripts del rayoLazer.
-    [SerializeField]private BossLaserLine laserLine;
-
-    //Variable de animacione.
+    [SerializeField] private BossLaserLine laserLine;
     private Animator _animBoss;
 
+    [SerializeField] private float attackCooldown = 5f;
+    [SerializeField] private float attackTimer = 0f;
 
-
-    //Variables de EstadoAttackBasic
-    [SerializeField]private float attackCooldown = 5f;
-    [SerializeField]private float attackTimer = 0f;
-
-
-
-    [Header("Deteccion")]
+    [Header("Detección")]
     public Transform player;
     public float detectionRadius = 5f;
 
-
-
     [Header("Ataque cuerpo a cuerpo")]
     public GameObject attackObject;
-
-
 
     [Header("Ataque a distancia")]
     public GameObject distanceProjectile;
     public Transform shootPivot;
     [SerializeField] private float _distanceCooldown = 2f;
     [SerializeField] private float _timer;
-    
-
 
     private MachineStates _machineStates;
 
-
-
-
-    //Estados
+    // Estados
     public IdleBossState idleState;
     public BossAttackBasic attackBasicState;
     public BossAttackDistance attackDistanceState;
+    public BossWaveState waveState;
 
-    public BossWaveState waveState;//Estado nuevo
-
-
-
-    //Encapsulamientos de las variables attackBasic.
+    // Encapsulamientos
     public float AttackCooldown { get => attackCooldown; set => attackCooldown = value; }
     public float AttackTimer { get => attackTimer; set => attackTimer = value; }
     public float DistanceCooldown { get => _distanceCooldown; set => _distanceCooldown = value; }
-    
-
-
-    //Encapsulamientos de las variables attackDistance. 
     public float Timer { get => _timer; set => _timer = value; }
-
-    
-
-    //Encapsulamiento de la mecanicaDeEstados.
     public MachineStates MachineStates { get => _machineStates; set => _machineStates = value; }
-    
-    
-
-    //Encapsulamiento del rayolazer.
     public BossLaserLine LaserLine { get => laserLine; set => laserLine = value; }
-    
-
-    
-    //Encapsulamiento de Animator.
     public Animator AnimBoss { get => _animBoss; set => _animBoss = value; }
-    public Collider ColiderBoss { get => _coliderBoss; set => _coliderBoss = value; }//EncasulamientoColider.
+    public Collider ColiderBoss { get => _coliderBoss; set => _coliderBoss = value; }
 
-
-    //Nuevo - control de oleadas
+    // Control de oleadas
     private bool wave70 = false;
     private bool wave50 = false;
 
-
+    // ---------------------------
+    // FASE ÚNICA DE PROYECTILES
+    // ---------------------------
+    [Header("Fase única de proyectiles")]
+    public int projectilesInPhase = 2;           // Cuántos proyectiles lanzar
+    public float projectileSpawnRadius = 6f;     // Radio alrededor del jugador
+    public float indicatorTime = 1f;             // Tiempo que aparece el indicador antes de caer
+    private bool phaseActive = false;            // Para activar fase cuando < 40%
+    // ---------------------------
 
     private void Start()
     {
         _machineStates = GetComponent<MachineStates>();
         _animBoss = GetComponent<Animator>();
-        _coliderBoss = GetComponent<Collider>(); 
+        _coliderBoss = GetComponent<Collider>();
 
         idleState = new IdleBossState(this);
         attackBasicState = new BossAttackBasic(this);
         attackDistanceState = new BossAttackDistance(this);
+        waveState = new BossWaveState(this, waveManager);
 
-        waveState = new BossWaveState(this, waveManager);//Nuevo
-
-
-        //Estado inicial del juego.
         _machineStates.SetState(idleState);
 
-        //Transiciones de los estados.
         _machineStates.AddTransition(idleState, new StateTransition(attackBasicState, () => PlayerInRage()));
         _machineStates.AddTransition(attackBasicState, new StateTransition(attackDistanceState, () => !PlayerInRage()));
         _machineStates.AddTransition(attackDistanceState, new StateTransition(attackBasicState, () => PlayerInRage()));
-
     }
 
-
-    //Nuevo
     private void Update()
     {
         LookAtPlayer();
         CheckWaveTriggers();
+        CheckPhaseActivation();
     }
 
-
-
-    void CheckWaveTriggers()
+    private void CheckWaveTriggers()
     {
         float hp = healthBar.fillAmount;
 
@@ -149,52 +104,70 @@ public class BossController : MonoBehaviour
         }
     }
 
-
-
-    void TriggerWaveState()
+    private void TriggerWaveState()
     {
         previousState = _machineStates.currentState as BaseBossState;
         _machineStates.SetState(waveState);
     }
-    //
 
-
-
-
+    private void CheckPhaseActivation()
+    {
+        if (!phaseActive && healthBar.fillAmount <= 0.4f)
+        {
+            phaseActive = true;
+        }
+    }
 
     public void AnimationEvent_BasicAttack()
     {
         if (_machineStates.currentState == attackBasicState)
-        {
             attackBasicState.DoBasicAttack();
-        }
     }
 
-
-
+    // ---------------------------
+    // ATAQUE A DISTANCIA CON FASE ÚNICA
+    // ---------------------------
     public void AnimationEvent_ShootProjectile()
     {
         if (_machineStates.currentState == attackDistanceState)
         {
-            attackDistanceState.DoShootProjectile();
+            if (phaseActive)
+                ShootPhaseProjectiles();
+            else
+                attackDistanceState.DoShootProjectile();
         }
     }
 
-    
+    private void ShootPhaseProjectiles()
+    {
+        if (distanceProjectile == null || player == null) return;
+
+        for (int i = 0; i < projectilesInPhase; i++)
+        {
+            Vector2 randomCircle = Random.insideUnitCircle * projectileSpawnRadius;
+            Vector3 targetPos = player.position + new Vector3(randomCircle.x, 0, randomCircle.y);
+
+            GameObject proj = Instantiate(distanceProjectile, shootPivot.position, Quaternion.identity);
+            ProjectileBoss pb = proj.GetComponent<ProjectileBoss>();
+            if (pb != null)
+            {
+                pb.indicatorDelay = indicatorTime;
+                pb.SetTarget(targetPos);
+            }
+        }
+    }
+
     public void AnimationEvent_WaveFinished()
     {
         waveState.AnimationEvent_WaveFinished();
     }
 
-
     public bool PlayerInRage()
     {
         if (player == null) return false;
-
         float distance = Vector3.Distance(player.position, transform.position);
         return distance <= detectionRadius;
     }
-
 
     private void LookAtPlayer()
     {
@@ -209,15 +182,9 @@ public class BossController : MonoBehaviour
         }
     }
 
-
-
-    //GIZMOS
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
-
     }
-
-
 }
