@@ -31629,7 +31629,7 @@ MonoBehaviour:
   detectionRadius: 50
   alertRadius: 1.9
   _target: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 6
   _pivotes:
   - {fileID: 596707551343836036}
   - {fileID: 4537674647489100556}

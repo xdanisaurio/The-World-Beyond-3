@@ -1586,8 +1586,8 @@ MonoBehaviour:
   m_SerializedVersion: 0
   m_AgentTypeID: 0
   m_CollectObjects: 1
-  m_Size: {x: 97.84259, y: 10, z: 57.13578}
-  m_Center: {x: 14.1117115, y: 2, z: -2.270256}
+  m_Size: {x: 97.84259, y: 10, z: 49.499992}
+  m_Center: {x: 14.11171, y: 2, z: 1.5476379}
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2548,7 +2548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &349266215
 Transform:
   m_ObjectHideFlags: 0
@@ -40679,7 +40679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4833692814856301534, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: projectileSpawnRadius
-      value: 17
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5177942631856613596, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: player
@@ -100762,7 +100762,7 @@ MonoBehaviour:
   detectionRadius: 50
   alertRadius: 1.9
   _target: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 6
   _pivotes:
   - {fileID: 596707552365161818}
   - {fileID: 4537674647537380818}
@@ -100796,7 +100796,7 @@ MonoBehaviour:
   detectionRadius: 50
   alertRadius: 1.9
   _target: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 6
   _pivotes:
   - {fileID: 596707550470134212}
   - {fileID: 4537674646213269836}
@@ -170556,8 +170556,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1638232, y: 1.2435546, z: 1.0301477}
-  m_Center: {x: -0.01072238, y: 0.3291248, z: -0.43624356}
+  m_Size: {x: 1.1638232, y: 1.1945815, z: 1.0301477}
+  m_Center: {x: -0.01072238, y: 0.35361192, z: -0.4362436}
 --- !u!33 &6014731074028748045
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -185616,6 +185616,7 @@ SceneRoots:
   - {fileID: 1841428821490365949}
   - {fileID: 5766139172370161555}
   - {fileID: 5420220324628424737}
+  - {fileID: 5766139171043470093}
   - {fileID: 188282180}
   - {fileID: 1757893474}
   - {fileID: 101615407}
@@ -185625,4 +185626,3 @@ SceneRoots:
   - {fileID: 576633513}
   - {fileID: 1925434038}
   - {fileID: 3639546924648560437}
-  - {fileID: 5766139171043470093}
