@@ -127,8 +127,8 @@ MonoBehaviour:
   speed: 30
   destroyDistance: 1
   impactEffect: {fileID: 2659462638974900628, guid: 22669d45e10ebba4cb5efbfd2fead812, type: 3}
-  shakeDuration: 0.1
-  shakeMagnitude: 0.4
+  shakeDuration: 0.2
+  shakeMagnitude: 0.5
   shootSFX: {fileID: 8300000, guid: cc3f21cf5f524cf4098c988f02175028, type: 3}
   impactSFX: {fileID: 0}
   indicatorPrefab: {fileID: 5783023649330032479, guid: ffd41b5bc52fb774b89979af391ced7b, type: 3}
