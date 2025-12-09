@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProjectileBoss : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class ProjectileBoss : MonoBehaviour
     public float shakeMagnitude = 0.1f;
 
     // ------------------------------------------------------
-    // ?? SONIDOS
+    //   SONIDOS
     // ------------------------------------------------------
     private AudioSource audioSource;
 
@@ -34,7 +34,7 @@ public class ProjectileBoss : MonoBehaviour
 
     private void Awake()
     {
-        // si el proyectil no tiene audioSource, intenta tomarlo del boss
+        // Si el proyectil NO tiene AudioSource, intenta tomar el del Boss.
         audioSource = GetComponent<AudioSource>();
 
         if (audioSource == null)
@@ -42,7 +42,7 @@ public class ProjectileBoss : MonoBehaviour
             audioSource = FindFirstObjectByType<BossController>()?.GetComponent<AudioSource>();
         }
 
-        // reproducir sonido al disparar
+        // Reproducir sonido de disparo
         if (audioSource != null && shootSFX != null)
             audioSource.PlayOneShot(shootSFX);
     }
@@ -58,7 +58,7 @@ public class ProjectileBoss : MonoBehaviour
             indicatorInstance = Instantiate(indicatorPrefab, targetPosition, Quaternion.identity);
         }
 
-        // Comenzar timer para permitir movimiento
+        // Timer para permitir movimiento
         if (indicatorDelay > 0)
             Invoke(nameof(EnableMovement), indicatorDelay);
         else
@@ -75,23 +75,23 @@ public class ProjectileBoss : MonoBehaviour
         if (!canMove)
             return;
 
-        // Movimiento del proyectil
+        // Movimiento hacia la posición objetivo
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
+        // Cuando llega al destino
         if (Vector3.Distance(transform.position, targetPosition) <= destroyDistance)
         {
-            // Spawnear efecto
+            // Efecto visual
             if (impactEffect != null)
             {
                 var effect = Instantiate(impactEffect, targetPosition, Quaternion.identity);
                 Destroy(effect, 2f);
             }
 
-            // SONIDO DE IMPACTO
-            if (audioSource != null && impactSFX != null)
-                audioSource.PlayOneShot(impactSFX);
+            // Reproducir sonido de impacto (NUEVO MÉTODO FIJO)
+            PlaySoundAtPoint(impactSFX, targetPosition);
 
-            // Shake
+            // Shake de cámara
             if (CameraShake.instance != null)
                 CameraShake.instance.Shake(shakeDuration, shakeMagnitude);
 
@@ -99,7 +99,28 @@ public class ProjectileBoss : MonoBehaviour
             if (indicatorInstance != null)
                 Destroy(indicatorInstance);
 
+            // Destruir proyectil
             Destroy(gameObject);
         }
+    }
+
+    // ------------------------------------------------------
+    // 🟩 NUEVO MÉTODO: REPRODUCE EL SONIDO DE FORMA FIJA
+    // ------------------------------------------------------
+    private void PlaySoundAtPoint(AudioClip clip, Vector3 position, float volume = 1f)
+    {
+        if (clip == null) return;
+
+        GameObject soundObj = new GameObject("TempImpactSound");
+        AudioSource a = soundObj.AddComponent<AudioSource>();
+
+        a.clip = clip;
+        a.volume = volume;
+        a.spatialBlend = 1f;   // 3D
+        soundObj.transform.position = position;
+
+        a.Play();
+
+        Destroy(soundObj, clip.length);
     }
 }
