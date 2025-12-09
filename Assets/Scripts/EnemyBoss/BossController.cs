@@ -38,6 +38,13 @@ public class BossController : MonoBehaviour
     public BossAttackDistance attackDistanceState;
     public BossWaveState waveState;
 
+    // ------------------------------
+    // --- NUEVO ---
+    // Evita que el boss cambie de estado hasta terminar la animación de ataque
+    [Header("Control de Ataque")]
+    public bool ataqueEnCurso = false;
+    // ------------------------------
+
     // Encapsulamientos
     public float AttackCooldown { get => attackCooldown; set => attackCooldown = value; }
     public float AttackTimer { get => attackTimer; set => attackTimer = value; }
@@ -56,10 +63,10 @@ public class BossController : MonoBehaviour
     // FASE ÚNICA DE PROYECTILES
     // ---------------------------
     [Header("Fase única de proyectiles")]
-    public int projectilesInPhase = 2;           // Cuántos proyectiles lanzar
-    public float projectileSpawnRadius = 10f;     // Radio alrededor del jugador
-    public float indicatorTime = 1f;             // Tiempo que aparece el indicador antes de caer
-    private bool phaseActive = false;            // Para activar fase cuando < 40%
+    public int projectilesInPhase = 2;
+    public float projectileSpawnRadius = 10f;
+    public float indicatorTime = 1f;
+    private bool phaseActive = false;
     // ---------------------------
 
     private void Start()
@@ -75,9 +82,17 @@ public class BossController : MonoBehaviour
 
         _machineStates.SetState(idleState);
 
-        _machineStates.AddTransition(idleState, new StateTransition(attackBasicState, () => PlayerInRage()));
-        _machineStates.AddTransition(attackBasicState, new StateTransition(attackDistanceState, () => !PlayerInRage()));
-        _machineStates.AddTransition(attackDistanceState, new StateTransition(attackBasicState, () => PlayerInRage()));
+        // --- CAMBIO ---
+        // Ahora las transiciones verifican ataqueEnCurso
+        _machineStates.AddTransition(idleState,
+            new StateTransition(attackBasicState, () => PlayerInRage() && !ataqueEnCurso));
+
+        _machineStates.AddTransition(attackBasicState,
+            new StateTransition(attackDistanceState, () => !PlayerInRage() && !ataqueEnCurso));
+
+        _machineStates.AddTransition(attackDistanceState,
+            new StateTransition(attackBasicState, () => PlayerInRage() && !ataqueEnCurso));
+        // --- CAMBIO ---
     }
 
     private void Update()
@@ -125,6 +140,16 @@ public class BossController : MonoBehaviour
     }
 
     // ---------------------------
+    // --- NUEVO ---
+    // Este evento viene al final de la animación de ataque
+    // Se pone desde el Animator
+    public void AnimationEvent_AtaqueTermino()
+    {
+        ataqueEnCurso = false;
+    }
+    // ---------------------------
+
+    // ---------------------------
     // ATAQUE A DISTANCIA CON FASE ÚNICA
     // ---------------------------
     public void AnimationEvent_ShootProjectile()
@@ -165,6 +190,7 @@ public class BossController : MonoBehaviour
     public bool PlayerInRage()
     {
         if (player == null) return false;
+
         float distance = Vector3.Distance(player.position, transform.position);
         return distance <= detectionRadius;
     }
