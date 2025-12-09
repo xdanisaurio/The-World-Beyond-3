@@ -18,6 +18,15 @@ public class BossHealth : MonoBehaviour
 
     private float lastHealth; // <-- para detectar daño real
 
+    // -------------------------------------------------
+    // 🔊 SONIDOS AÑADIDOS (esto es lo único agregado)
+    // -------------------------------------------------
+    [Header("Sonidos del Boss")]
+    public AudioSource audioSource;   // arrastras el AudioSource del boss
+    public AudioClip damageSFX;       // sonido cuando recibe daño
+    public AudioClip deathSFX;        // sonido cuando muere
+    // -------------------------------------------------
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -49,6 +58,10 @@ public class BossHealth : MonoBehaviour
         if (currentHealth < lastHealth)
         {
             PlayDamageParticle();
+
+            // 🔊 SONIDO DE DAÑO
+            if (audioSource != null && damageSFX != null)
+                audioSource.PlayOneShot(damageSFX);
         }
 
         lastHealth = currentHealth;
@@ -73,6 +86,10 @@ public class BossHealth : MonoBehaviour
     {
         Debug.Log("El enemigo ha muerto");
 
+        // 🔊 SONIDO DE MUERTE
+        if (audioSource != null && deathSFX != null)
+            audioSource.PlayOneShot(deathSFX);
+
         if (deathSound != null)
             deathSound.PlayDeathSound();
 
@@ -82,7 +99,6 @@ public class BossHealth : MonoBehaviour
         if (machineStates != null)
             machineStates.enabled = false;
 
-        //Notificar que este enemigo murió (para saber si es el último)
         if (BossEnemyManager.Instance != null)
             BossEnemyManager.Instance.EnemigoMuerto(transform.position);
 

@@ -11,15 +11,42 @@ public class ProjectileBoss : MonoBehaviour
     public float shakeDuration = 0.3f;
     public float shakeMagnitude = 0.1f;
 
+    // ------------------------------------------------------
+    // ?? SONIDOS
+    // ------------------------------------------------------
+    private AudioSource audioSource;
+
+    [Header("Sound Settings")]
+    public AudioClip shootSFX;      // sonido al disparar
+    public AudioClip impactSFX;     // sonido al impactar
+    // ------------------------------------------------------
+
     // ---------------------------
     // INDICADOR PREVIO
     // ---------------------------
     [Header("Indicator Settings")]
-    public GameObject indicatorPrefab;   // Prefab del círculo/partícula
+    public GameObject indicatorPrefab;
     private GameObject indicatorInstance;
-    public float indicatorDelay = -1f;    // Tiempo antes de que el proyectil se mueva
-    private bool canMove = false;        // Bloquea movimiento
+    public float indicatorDelay = -1f;
+    private bool canMove = false;
     // ---------------------------
+
+
+    private void Awake()
+    {
+        // si el proyectil no tiene audioSource, intenta tomarlo del boss
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            audioSource = FindFirstObjectByType<BossController>()?.GetComponent<AudioSource>();
+        }
+
+        // reproducir sonido al disparar
+        if (audioSource != null && shootSFX != null)
+            audioSource.PlayOneShot(shootSFX);
+    }
+
 
     public void SetTarget(Vector3 position)
     {
@@ -48,21 +75,27 @@ public class ProjectileBoss : MonoBehaviour
         if (!canMove)
             return;
 
-        // Movimiento
+        // Movimiento del proyectil
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, targetPosition) <= destroyDistance)
         {
+            // Spawnear efecto
             if (impactEffect != null)
             {
                 var effect = Instantiate(impactEffect, targetPosition, Quaternion.identity);
                 Destroy(effect, 2f);
             }
 
+            // SONIDO DE IMPACTO
+            if (audioSource != null && impactSFX != null)
+                audioSource.PlayOneShot(impactSFX);
+
+            // Shake
             if (CameraShake.instance != null)
                 CameraShake.instance.Shake(shakeDuration, shakeMagnitude);
 
-            // Destruir indicador al impactar
+            // Destruir indicador
             if (indicatorInstance != null)
                 Destroy(indicatorInstance);
 
