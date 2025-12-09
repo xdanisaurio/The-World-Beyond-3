@@ -1586,8 +1586,8 @@ MonoBehaviour:
   m_SerializedVersion: 0
   m_AgentTypeID: 0
   m_CollectObjects: 1
-  m_Size: {x: 97.84259, y: 10, z: 49.499992}
-  m_Center: {x: 14.11171, y: 2, z: 1.5476379}
+  m_Size: {x: 97.84259, y: 10, z: 53.418114}
+  m_Center: {x: 14.11171, y: 2, z: -0.41142273}
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2392,7 +2392,7 @@ MonoBehaviour:
   basicEnemy: {fileID: 2703947765747308202, guid: 9a7d1c3f5ebcb2b45b576584e72d4e97, type: 3}
   advancedEnemy: {fileID: 717419564622557169, guid: 4998036ebf5be1640863ed03a9558995, type: 3}
   basicWaveAmount: 5
-  advancedWaveAmount: 4
+  advancedWaveAmount: 3
 --- !u!4 &321694959
 Transform:
   m_ObjectHideFlags: 0
@@ -2548,7 +2548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &349266215
 Transform:
   m_ObjectHideFlags: 0
@@ -39358,6 +39358,102 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973668247}
   m_Mesh: {fileID: -5346190059585651795, guid: 55ab5fda2b1683e44af1acb0d50433e5, type: 3}
+--- !u!1 &1982601994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1982601996}
+  - component: {fileID: 1982601995}
+  - component: {fileID: 1982601997}
+  - component: {fileID: 1982601998}
+  m_Layer: 0
+  m_Name: DestroyProyectileRange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1982601995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982601994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b6e065ba6c2bfb4481a8e04e0a132f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileTag: BossProjectile
+  effectTag: ProjectileEffect
+--- !u!4 &1982601996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982601994}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.605278, y: -8.750641, z: -31.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1982601997
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982601994}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 146.94534, y: 44.223194, z: 126.372185}
+  m_Center: {x: 28.630753, y: 14.726572, z: -62.686092}
+--- !u!54 &1982601998
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982601994}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1987448991
 GameObject:
   m_ObjectHideFlags: 0
@@ -40679,7 +40775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4833692814856301534, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: projectileSpawnRadius
-      value: 11
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5177942631856613596, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: player
@@ -185626,3 +185722,4 @@ SceneRoots:
   - {fileID: 576633513}
   - {fileID: 1925434038}
   - {fileID: 3639546924648560437}
+  - {fileID: 1982601996}
