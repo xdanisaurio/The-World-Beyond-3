@@ -8,8 +8,8 @@ public class ProjectileBoss : MonoBehaviour
 
     [Header("Impact Settings")]
     public GameObject impactEffect;
-    public float shakeDuration = 0.3f;
-    public float shakeMagnitude = 0.1f;
+    public float shakeDuration = 0.1f;
+    public float shakeMagnitude = 0.04f;
 
     // ------------------------------------------------------
     //   SONIDOS

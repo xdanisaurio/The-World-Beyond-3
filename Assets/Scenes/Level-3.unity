@@ -2392,7 +2392,7 @@ MonoBehaviour:
   basicEnemy: {fileID: 2703947765747308202, guid: 9a7d1c3f5ebcb2b45b576584e72d4e97, type: 3}
   advancedEnemy: {fileID: 717419564622557169, guid: 4998036ebf5be1640863ed03a9558995, type: 3}
   basicWaveAmount: 5
-  advancedWaveAmount: 4
+  advancedWaveAmount: 3
 --- !u!4 &321694959
 Transform:
   m_ObjectHideFlags: 0
@@ -13319,7 +13319,7 @@ PrefabInstance:
       objectReference: {fileID: 24300002, guid: 714a3de7cc836424c9e1ca61bc49951b, type: 2}
     - target: {fileID: 6808616142907293736, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: _value
-      value: 1000
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6875023358211377781, guid: 170ec6caf375aed44b04db894bad93f5, type: 3}
       propertyPath: m_Color.b
@@ -40679,7 +40679,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4833692814856301534, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: projectileSpawnRadius
-      value: 14
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5177942631856613596, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: player
@@ -40692,6 +40692,18 @@ PrefabInstance:
     - target: {fileID: 7259661405475806895, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448015392502024364, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448015392502024364, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7448015392502024364, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
