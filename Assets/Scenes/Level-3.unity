@@ -40770,6 +40770,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 321694958}
     - target: {fileID: 4833692814856301534, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
+      propertyPath: meleeAttackSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ca85858abd60a349962ed26d1e5559a, type: 3}
+    - target: {fileID: 4833692814856301534, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: projectilesInPhase
       value: 3
       objectReference: {fileID: 0}
