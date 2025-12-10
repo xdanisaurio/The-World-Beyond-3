@@ -40719,7 +40719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3892496160898696931, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.92
+      value: 41.75
       objectReference: {fileID: 0}
     - target: {fileID: 3892496160898696931, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -40727,7 +40727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3892496160898696931, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.07
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 3892496160898696931, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -40774,6 +40774,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 8ca85858abd60a349962ed26d1e5559a, type: 3}
     - target: {fileID: 4833692814856301534, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
+      propertyPath: detectionRadius
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833692814856301534, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: projectilesInPhase
       value: 3
       objectReference: {fileID: 0}
@@ -40804,6 +40808,18 @@ PrefabInstance:
     - target: {fileID: 7448015392502024364, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
       propertyPath: m_LocalPosition.z
       value: 3.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882652398911017622, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.3288355
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882652398911017622, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1842
+      objectReference: {fileID: 0}
+    - target: {fileID: 8882652398911017622, guid: 60e03c7551edf594587ba75dc3dcd9b2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.1858
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -185705,10 +185721,10 @@ SceneRoots:
   - {fileID: 630868647}
   - {fileID: 378784247626002928}
   - {fileID: 6250362171372098599}
+  - {fileID: 321694959}
   - {fileID: 181692744}
   - {fileID: 1372646705}
   - {fileID: 143647868}
-  - {fileID: 321694959}
   - {fileID: 2122758873}
   - {fileID: 272472396}
   - {fileID: 6813425926359489216}
