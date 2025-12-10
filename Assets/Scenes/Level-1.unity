@@ -19306,11 +19306,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2834560644946889096, guid: da7673952d92a974dba92d77d05b4120, type: 3}
       propertyPath: m_Size.z
-      value: 2.819766
+      value: 5.034717
       objectReference: {fileID: 0}
     - target: {fileID: 2834560644946889096, guid: da7673952d92a974dba92d77d05b4120, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2834560644946889096, guid: da7673952d92a974dba92d77d05b4120, type: 3}
+      propertyPath: m_Center.z
+      value: 0.24657317
       objectReference: {fileID: 0}
     - target: {fileID: 3403568938533714543, guid: da7673952d92a974dba92d77d05b4120, type: 3}
       propertyPath: m_Enabled
