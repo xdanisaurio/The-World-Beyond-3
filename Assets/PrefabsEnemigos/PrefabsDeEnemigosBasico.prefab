@@ -369,7 +369,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -492,7 +492,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -41521,6 +41521,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value: 15
   _validTargets: 00000000
+  targetType: 0
+  shakeDuration: 0.1
+  shakeMagnitude: 0.2
 --- !u!1 &7917137497819502137
 GameObject:
   m_ObjectHideFlags: 0
