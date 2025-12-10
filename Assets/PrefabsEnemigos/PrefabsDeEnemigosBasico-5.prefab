@@ -5620,7 +5620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidaEnemigo: {fileID: 1140386636401383466}
   healthSlider: {fileID: 2438550381795910692}
-  initialHealth: 300
+  initialHealth: 450
   damageParticle: {fileID: 6651247000163292862, guid: ecb38e0319a6ad44cbca52d7b5add7a6, type: 3}
   particleOffsetY: 1.5
 --- !u!114 &1140386636401383466
